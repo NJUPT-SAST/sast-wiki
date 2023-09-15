@@ -1,0 +1,54 @@
+name: UpdateDocs
+
+on:
+  repository_dispatch:
+    types: [update_docs]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+          fetch-depth: 0 
+          ref: 'main'
+
+      - name: sync docs source
+        run: |
+          git submodule update --remote --rebase docs
+
+      - name: build docs
+        run: |
+          pip install mkdocs-material
+          mkdocs build
+
+      - name: sync to server
+        uses: burnett01/rsync-deployments@6.0.0
+        with:
+          switches: -rv --delete
+          path: site/
+          remote_path: /home/wiki/wiki.sast.fun/
+          remote_host: wiki.sast.fun
+          remote_user: wiki
+          remote_key: ${{ secrets.DEPLOY_KEY }}
+
+
+
+      - name: commit changes
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          if $(git diff | grep -q ""); then
+            git add .
+            git commit -m "update docs source"
+          fi
+          
+      - name: push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.PAT }}
+          force: true
+          branch: main
+      
