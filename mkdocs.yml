@@ -1,1 +1,3 @@
 site_name: SAST Wiki
+theme:
+  name: material
