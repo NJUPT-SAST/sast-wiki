@@ -1,0 +1,3 @@
+[submodule "docs"]
+	path = docs
+	url = https://github.com/NJUPT-SAST/sast-wiki-md.git
