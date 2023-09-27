@@ -1,3 +1,40 @@
 site_name: SAST Wiki
 theme:
   name: material
+  language: zh
+  logo: https://aliyun.sastimg.mxte.cc/images/2023/09/27/logode95c3e83201ee69.png
+  palette:
+    primary: cyan
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.tabs
+    - navigation.expand
+    - navigation.path
+    - navigation.indexes
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - search.share
+    - header.autohide
+    - navigation.footer
+    - content.action.edit
+plugins:
+  - search
+  - offline
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/NJUPT-SAST
+    - icon: fontawesome/brands/bilibili
+      link: https://space.bilibili.com/385170291
+copyright: Copyright &copy; 1992 - 2023 NJUPT SAST
+repo_url: https://github.com/NJUPT-SAST/sast-wiki-md
+repo_name: 文章仓库
+edit_uri: /NJUPT-SAST/sast-wiki-md/blob/main/
+nav:
+  - 主页: https://sast.fun
+  - 科协简介: index.md
+  - 科协文章: /sast/
+  - 南邮生活指南: /njuptwiki/
+
