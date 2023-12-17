@@ -21,7 +21,20 @@ theme:
     - content.action.edit
 plugins:
   - search
+  # - meta
   - offline
+  - blog:
+      post_date_format: full
+      post_url_date_format: yyyy/MM/dd
+      post_excerpt_separator: <!--more-->
+      pagination: true
+  # - rss:
+  #     match_path: blog/posts/.*
+  #     date_from_meta:
+  #       as_creation: date
+  #     categories:
+  #       - categories
+  #       - tags
 extra:
   social:
     - icon: fontawesome/brands/github
@@ -33,8 +46,38 @@ repo_url: https://github.com/NJUPT-SAST/sast-wiki-md
 repo_name: 文章仓库
 edit_uri: /NJUPT-SAST/sast-wiki-md/blob/main/
 nav:
-  - 主页: https://sast.fun
-  - 科协简介: index.md
-  - 科协文章: /sast/
-  - 南邮生活指南: /njuptwiki/
+  - 官网: https://sast.fun
+  - 开始: 
+    - 介绍: README.md
+    - 贡献: CONTRIBUTION.md
+  - 关于科协:
+    - 简介: sast/README.md
+    - 活动: sast/activity.md
+    - 架构: sast/architecture.md
+    - 项目: sast/project.md
+  - 科协文章: 
+    - blog/index.md
+  - 南邮生活指南: 
+    - 📑 主页: njuptwiki/index.md
+    - 📚︎ 学习: njuptwiki/study.md
+    - 😉 日常生活: njuptwiki/life.md
+    - 📅 校历: njuptwiki/calendar.md
+    - 🏝️ 校园社团: njuptwiki/clubs.md
+    - 🏫 建筑与设施: njuptwiki/facilities.md
+    - 📷 媒体: njuptwiki/medias.md
+    - 🚌 交通: njuptwiki/traffic.md
+    - 🗺️ 附近: njuptwiki/nearby.md
+    - 🆕️ 黄页: njuptwiki/yellowpage.md
+    - 🌐 服务: njuptwiki/services.md
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - assets/js/katex.js 
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js  
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
+
+extra_css:
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
 
