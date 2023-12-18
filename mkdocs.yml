@@ -1,10 +1,34 @@
 site_name: SAST Wiki
 theme:
   name: material
+  custom_dir: overrides
   language: zh
   logo: https://aliyun.sastimg.mxte.cc/images/2023/09/27/logode95c3e83201ee69.png
+  icon:
+    repo: fontawesome/brands/github-alt
   palette:
-    primary: cyan
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      primary: cyan
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: cyan
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: cyan
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
   features:
     - navigation.instant
     - navigation.instant.prefetch
@@ -19,6 +43,8 @@ theme:
     - header.autohide
     - navigation.footer
     - content.action.edit
+    - content.code.annotate
+    - content.code.copy
 plugins:
   - search
   # - meta
@@ -72,6 +98,18 @@ nav:
 markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
 extra_javascript:
   - assets/js/katex.js 
